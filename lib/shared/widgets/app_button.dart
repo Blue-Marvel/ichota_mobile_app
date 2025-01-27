@@ -31,8 +31,8 @@ class AppButton extends StatelessWidget {
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(40))),
       child: state
           ? SizedBox(
-              width: 30,
-              height: 30,
+              width: 20,
+              height: 20,
               child: CircularProgressIndicator.adaptive(),
             )
           : Text(title),

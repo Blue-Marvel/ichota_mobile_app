@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'iChota Interview',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: AppFonts.poppins,
         colorScheme: ColorScheme.fromSeed(seedColor: AppColor.blueColor),

@@ -106,12 +106,14 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       TextInputField(
                         title: "Email",
                         hintText: 'yourname@company.com',
+                        controller: emailController,
                         validator: AppValidations.validatedEmail,
                       ),
                       40.verticalSpace,
                       TextInputField(
                         title: "Password",
                         obscureText: _obscureText,
+                        controller: passwordController,
                         validator: AppValidations.validatePassword,
                         suffixIcon: InkWell(
                           onTap: () {
@@ -137,9 +139,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                       20.verticalSpace,
                       AppButton(
                         title: "Log in",
-                        state: false,
-                        onPressed: () {
+                        state: ref.watch(authProvider).isLoading,
+                        onPressed: () async {
                           if (_formKey.currentState!.validate()) {
+                            await ref.read(authProvider).login(
+                                  emailController.text,
+                                  passwordController.text,
+                                );
                             // context.pushReplacement(DashBoard.routeName);
                           }
                         },
